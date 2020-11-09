@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TST01_Vraag1
 {
     class Program
     {
+        static void Slip(int s)
+        {
+            Thread.Sleep(s);
+        }
         static void Main(string[] args)
         {
             string l1 = new string('!', 33);
@@ -25,10 +30,12 @@ namespace TST01_Vraag1
                 // note: it look fine so i made it like this
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine($"{l1}{l2}{l3}");
+                Slip(1000);
                 Console.WriteLine("Welkom bij de GOBLIN-app voor het berekenen van kortingen op rekeningen");
                 do
                 {
                     Console.WriteLine($"{l1}{l2}{l3}");
+                    Slip(800);
                     Console.Write("vul het bedrag van de factuur in : ");
                     ammount = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine($"{l1}{l2}{l3}");
@@ -36,8 +43,10 @@ namespace TST01_Vraag1
                     if (ammount > 5000)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
+                        Slip(800);
                         Console.WriteLine("gefeliciteerd je komt in aanmerking voor een korting van (5 %) wat een geweldige dag voor je");
                         ammountAfterDiscount = ammount - (ammount * discount / 100);
+                        Slip(900);
                         Console.WriteLine($"uw totaal na de korting is €{ammountAfterDiscount}");
                         Console.WriteLine($"{l1}{l2}{l3}");
                         Console.ReadLine();
@@ -47,6 +56,7 @@ namespace TST01_Vraag1
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{l1}{l2}{l3}");
                         ammountToDiscount2 = ammountToDiscount1 - ammount;
+                        Slip(900);
                         Console.WriteLine($"helaas heb je geen korting, maar maak je geen zorgen, we kunnen je helpen, het enige wat je hoeft te doen is wat meer te betalen : €{ammountToDiscount2} en de absolute korting van 5 % op je aankopen te krijgen");
                         Console.WriteLine($"{l1}{l2}{l3}");
                     }
@@ -54,9 +64,12 @@ namespace TST01_Vraag1
                     Console.Clear();
                     Console.WriteLine($"{l1}{l2}{l3}");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Slip(800);
                     Console.WriteLine("wil je opnieuw opstarten of niet ");
+                    Slip(800);
                     Console.WriteLine("1 / 0");
                     Console.WriteLine($"{l1}{l2}{l3}");
+                    Slip(800);
                     Console.Write("your answer : ");
                     answer = Convert.ToInt32(Console.ReadLine().ToLower());
                     Console.ReadLine();
@@ -65,6 +78,7 @@ namespace TST01_Vraag1
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"{l1}{l2}{l3}");
+                        Slip(500);
                         Console.WriteLine("wat een geweldige keuze, betaal nu meer geld");
                         start = true;
                     }
@@ -72,12 +86,14 @@ namespace TST01_Vraag1
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{l1}{l2}{l3}");
+                        Slip(300);
                         Console.WriteLine("TE SLECHT OM U TE VERLATEN, AFSUIT");
                         start = false;
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
+                        Slip(300);
                         Console.WriteLine("tour answer is not correct");
                         Console.ResetColor();
                     }
